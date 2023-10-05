@@ -1,7 +1,78 @@
 // Top-level build file where you can add configuration options common to all sub-projects/modules.
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
+buildscript {
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+
 plugins {
     alias(libs.plugins.com.android.application) apply false
     alias(libs.plugins.org.jetbrains.kotlin.android) apply false
+    alias(libs.plugins.ktlint) apply false
+    alias(libs.plugins.hilt) apply false
+    alias(libs.plugins.ksp) apply false
+
 }
-true // Needed to make the Suppress annotation work for the plugins block
+
+
+subprojects {
+
+    apply(plugin = "org.jlleitschuh.gradle.ktlint")
+
+    configure<org.jlleitschuh.gradle.ktlint.KtlintExtension> {
+        debug.set(true)
+        verbose.set(true)
+        android.set(false)
+        outputToConsole.set(true)
+        outputColorName.set("RED")
+        filter {
+            exclude("**/generated/**")
+            include("**/kotlin/**")
+        }
+    }
+
+//    apply(plugin = "com.diffplug.spotless")
+
+//    spotless {
+//        kotlin {
+//            target("**/*.kt")
+//            trimTrailingWhitespace()
+//            indentWithSpaces()
+//            endWithNewline()
+//        }
+//
+//        format("misc") {
+//            target("**/*.gradle", "**/*.md", "**/.gitignore")
+//        }
+//
+//        format("xml") {
+//            target("**/*.xml")
+//            indentWithSpaces()
+//            trimTrailingWhitespace()
+//            endWithNewline()
+//        }
+//    }
+
+    // ./gradlew compose:material:assembleRelease -PenableComposeCompilerReports=true
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
+        kotlinOptions {
+            if (project.findProperty("enableComposeCompilerReports") == "true") {
+                freeCompilerArgs += arrayOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:reportsDestination=" +
+                            project.buildDir.absolutePath + "/compose_metrics"
+                )
+                freeCompilerArgs += arrayOf(
+                    "-P",
+                    "plugin:androidx.compose.compiler.plugins.kotlin:metricsDestination=" +
+                            project.buildDir.absolutePath + "/compose_metrics"
+                )
+                freeCompilerArgs += arrayOf(
+                    "-opt-in=kotlin.RequiresOptIn",
+                    "-Xjvm-default=all-compatibility"
+                )
+            }
+        }
+    }
+}

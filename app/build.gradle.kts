@@ -1,10 +1,10 @@
 import java.util.Date
 import java.text.SimpleDateFormat
 
-@Suppress("DSL_SCOPE_VIOLATION") // TODO: Remove once KTIJ-19369 is fixed
 plugins {
-    alias(libs.plugins.com.android.application)
-    alias(libs.plugins.org.jetbrains.kotlin.android)
+    id("pokemon.app")
+    id("pokemon.hilt")
+    id("pokemon.network")
 }
 
 fun getDate(): String {
@@ -13,16 +13,10 @@ fun getDate(): String {
 
 android {
     namespace = "com.pokemon.aylapokemon"
-    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.pokemon.aylapokemon"
-        minSdk = 24
-        targetSdk = 34
-        versionCode = 1
-        versionName = "1.0"
 
-        testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
             useSupportLibrary = true
         }
@@ -46,18 +40,10 @@ android {
             isDefault = true
         }
     }
-    compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_17
-        targetCompatibility = JavaVersion.VERSION_17
-    }
-    kotlinOptions {
-        jvmTarget = "17"
-    }
-    buildFeatures {
-        compose = true
-    }
+
+
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = "1.5.0"
     }
     packaging {
         resources {
