@@ -1,4 +1,5 @@
 pluginManagement {
+    includeBuild("build-logic")
     repositories {
         google()
         mavenCentral()
@@ -15,4 +16,5 @@ dependencyResolutionManagement {
 
 rootProject.name = "AylaPokemon"
 include(":app")
- 
+include(":app:foundation")
+include(":foundation:network")
