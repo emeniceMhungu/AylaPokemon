@@ -1,0 +1,19 @@
+@Module
+@InstallIn(SingletonComponent::class)
+object PokemonDataModule {
+
+    @Provides
+    @Singleton
+    fun providePokemonRepository(
+        pokemonRepositoryImpl: PokemonRepositoryImpl
+    ): PokemonRepository = pokemonRepositoryImpl
+
+    @Singleton
+    @Provides
+    fun providePokemonApi(
+        retrofit: Retrofit.Builder
+    ): PokemonApi {
+        return retrofit.build().create(PokemonApi::class.java)
+    }
+
+}

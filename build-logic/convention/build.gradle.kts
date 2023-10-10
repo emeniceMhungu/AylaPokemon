@@ -25,7 +25,7 @@ gradlePlugin {
             id = "pokemon.network"
             implementationClass = "ApplicationNetworkingConventionPlugin"
         }
-        register("networkLibray") {
+        register("networkLibrary") {
             id = "pokemon.library.network"
             implementationClass = "LibraryNetworkingConventionPlugin"
         }
@@ -38,6 +38,11 @@ gradlePlugin {
         register("androidHilt") {
             id = "pokemon.hilt"
             implementationClass = "AndroidHiltConventionPlugin"
+        }
+
+        register("unitTest") {
+            id = "pokemon.testing"
+            implementationClass = "UnitTestConventionPlugin"
         }
     }
 }

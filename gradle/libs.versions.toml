@@ -52,12 +52,15 @@ kotlin-test = { module = "org.jetbrains.kotlin:kotlin-test-junit", version = "1.
 testing-junit = { module = "junit:junit", version.ref = "junit" }
 testing-mockk = { module = "io.mockk:mockk", version = "1.12.4" }
 testing-turbine = { module = "app.cash.turbine:turbine", version = "0.12.1" }
-testing-testng = { module = "org.testng:testng", version = "6.9.6" }
+testing-testing = { module = "org.testng:testng", version = "6.9.6" }
 testing-instantiator = { module = "com.hannesdorfmann.instantiator:instantiator", version = "1.0.0" }
-
-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+androidx-test-runner = { module = "androidx.test:runner", version = "1.5.2" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
+androidx-junit-ktx = { group = "androidx.test.ext", name = "junit-ktx", version = "1.1.5" }
+testing-mock-webserver = { module = "com.squareup.okhttp3:mockwebserver", version = "4.10.0" }
+
+core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso-core" }
 lifecycle-runtime-ktx = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle-runtime-ktx" }
 activity-compose = { group = "androidx.activity", name = "activity-compose", version.ref = "activity-compose" }
