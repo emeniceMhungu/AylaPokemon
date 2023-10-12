@@ -18,3 +18,5 @@ rootProject.name = "AylaPokemon"
 include(":app")
 include(":app:foundation")
 include(":foundation:network")
+include(":feature")
+include(":feature:pokeayla")

@@ -12,6 +12,7 @@ plugins {
     alias(libs.plugins.ktlint) apply false
     alias(libs.plugins.hilt) apply false
     alias(libs.plugins.ksp) apply false
+    alias(libs.plugins.roborazzi) apply false
 
 }
 
@@ -54,7 +55,6 @@ subprojects {
 //        }
 //    }
 
-    // ./gradlew compose:material:assembleRelease -PenableComposeCompilerReports=true
     tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile::class).configureEach {
         kotlinOptions {
             if (project.findProperty("enableComposeCompilerReports") == "true") {
