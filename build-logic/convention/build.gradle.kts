@@ -44,5 +44,15 @@ gradlePlugin {
             id = "pokemon.testing"
             implementationClass = "UnitTestConventionPlugin"
         }
+
+        register("androidLibraryCompose") {
+            id = "pokemon.library.compose"
+            implementationClass = "AndroidLibraryComposeConventionPlugin"
+        }
+
+        register("androidApplicationCompose") {
+            id = "pokemon.application.compose"
+            implementationClass = "AndroidApplicationComposeConventionPlugin"
+        }
     }
 }

@@ -1,8 +1,8 @@
 import com.android.build.api.dsl.ApplicationExtension
 import com.android.build.api.dsl.CommonExtension
+import com.pokemon.convention.libs
 import org.gradle.api.Plugin
 import org.gradle.api.Project
-import org.gradle.api.artifacts.VersionCatalogsExtension
 import org.gradle.kotlin.dsl.dependencies
 import org.gradle.kotlin.dsl.getByType
 
@@ -22,7 +22,7 @@ class ApplicationNetworkingConventionPlugin : Plugin<Project> {
 internal fun Project.configureNetwork(
     commonExtension: CommonExtension<*, *, *, *>
 ) {
-    val libs = extensions.getByType<VersionCatalogsExtension>().named("libs")
+
     commonExtension.apply {
         dependencies {
             "implementation"(libs.findLibrary("retrofit").get())
